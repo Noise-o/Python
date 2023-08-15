@@ -1,0 +1,28 @@
+Teminar projeto Crud Flask
+Organizar repositório git 
+    crud + flask
+    pandas 
+    pyqt6/tkinter 
+    numpy
+Fazer um linked in 
+Tirar uma foto 
+aplicar para vaga remota
+
+até dia 31/05
+
+
+Crud
+Flask
+SqlAlchemy
+Shell
+Bootstrap
+Modais em html
+Amazon RDS
+
+
+
+
+
+
+
+

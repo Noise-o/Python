@@ -1,0 +1,108 @@
+<!-- Na páigina principal deve-se fazer as importações de extends(herança) e include(ppara trazer algum arquivo)  -->
+{% extends 'base.html' %}
+
+{% include 'header.html'%}
+
+
+{% block body%}
+<   <div class="container mt-4">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <table class="table table-success table-striped table-hover table-dark" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-Mail</th>
+                <th>Telefone</th>
+                 <th colspan="2">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{pessoa.id}}</td>
+                    <td>{{pessoa.nome}}</td>
+                    <td>{{pessoa.email}}</td>
+                    <td>{{pessoa.fone}}</td>
+                    <td>
+                        <a href="/update/{{pessoa.id}}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit{{pessoa.id}}">Editar</a>
+                         <a href="/delete/{{pessoa.id}}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja apagar?')">Apagar</a>
+                    </td>
+                </tr>
+
+
+                 <!-- update model -->
+<div id="modaledit{{pessoa.id}}" class="modal fade" role="dialog">
+<div class="modal-dialog">
+  <div class="modal-content">
+     <div class="modal-header">
+        <h4 class="modal-nome">Editar Cliente</h4>
+     </div>
+     <div class="modal-body">
+
+        <form action="{{url_for('update')}}" method="POST">
+
+
+           <div class="form-group">
+
+              <label>Nome:</label>
+               <input type="hidden"  name="id" value="{{pessoa.id}}">
+              <input type="text" class="form-control" name="nome" value="{{pessoa.nome}}" >
+
+           </div>
+
+
+
+            <div class="form-group">
+              <label>E-Mail:</label>
+              <input type="text" class="form-control" name="email" value="{{pessoa.email}}">
+           </div>
+
+             <div class="form-group">
+              <label>Telefone:</label>
+              <input type="text" class="form-control" name="fone" value="{{pessoa.fone}}">
+           </div>
+
+           <div class="form-group">
+              <button class="btn btn-primary mt-4" type="submit">Confirmar Mudanças</button>
+           </div>
+
+
+        </form>
+
+
+     </div>
+
+
+     <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+
+     </div>
+
+
+  </div>
+
+
+</div>
+
+
+</div>
+
+
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{%endblock%}
+

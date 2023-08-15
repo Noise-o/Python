@@ -1,0 +1,10 @@
+Página de login
+
+Flask 
+SqnAlchemy
+Bootstrap 
+flask_wtform 
+Werkzeug.security
+flask login 
+
+Página de usuário, cadastro e dashboard com criptografia de senha e redirecionamento para a pagina do usuário.
